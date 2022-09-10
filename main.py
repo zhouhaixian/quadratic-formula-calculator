@@ -108,7 +108,7 @@ if __name__ == '__main__':
                 print_license()
                 input("\n\n\n请按任意键继续")
             case "quit" | "exit":
-                quit()
+                break
             case _:
                 try:
                     input(f"解得: {calculate(content)}，请按任意键继续")
