@@ -40,7 +40,7 @@ def solve(abc, detail):
 
     :param abc: 一个由方程的一次项系数、二次项系数、常数项组成的数组
     :param detail: △
-    :return: 方程的解
+    :return: 方程的实数解
     """
     a = abc[0]
     b = abc[1]
@@ -56,6 +56,12 @@ def solve(abc, detail):
 
 
 def calculate(equation):
+    """
+    计算一般形式的一元二次方程
+
+    :param equation: 一般形式的一元二次方程 ( ax²+bx+c )
+    :return: 方程的实数解
+    """
     abc = parse(equation)
     detail = calculate_detail(abc)
     return solve(abc, detail)
