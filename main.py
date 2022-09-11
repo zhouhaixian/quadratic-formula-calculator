@@ -40,12 +40,14 @@ def solve(abc, detail):
 
     :param abc: 一个由方程的一次项系数、二次项系数、常数项组成的数组
     :param detail: △
-    :return: 方程的解
+    :return: 方程的实数解
     """
     a = abc[0]
     b = abc[1]
     if detail > 0:
+        # x1 = (-b + √△) / (2a)
         x1 = (-b + pow(detail, 0.5)) / (2 * a)
+        # x2 = (-b - √△) / (2a)
         x2 = (-b - pow(detail, 0.5)) / (2 * a)
         return f"x1 = {x1}, x2 = {x2}"
     elif detail == 0:
@@ -56,6 +58,12 @@ def solve(abc, detail):
 
 
 def calculate(equation):
+    """
+    计算一般形式的一元二次方程
+
+    :param equation: 一般形式的一元二次方程 ( ax²+bx+c )
+    :return: 方程的实数解
+    """
     abc = parse(equation)
     detail = calculate_detail(abc)
     return solve(abc, detail)
@@ -76,10 +84,10 @@ def print_help():
         """
     ====================================================================================
             Quadratic Formula Calculator
-                - Version: 1.0.3
+                - Version: 1.0.5
                 - Author:  周海衔
                 - License: GPL-3.0
-                - Repository: https://github.com/zhouhaixian/bilibili-quick-collect
+                - Repository: https://github.com/zhouhaixian/quadratic-formula-calculator
     ====================================================================================
         Quadratic Formula Calculator Copyright (C) 2022 Zhou Haixian
         This program comes with ABSOLUTELY NO WARRANTY; for details type `license'.
@@ -89,28 +97,27 @@ def print_help():
         软件名称：一元二次方程计算器
         作者：周海衔
         许可证：GPL-3.0
-        源代码存储库：https://github.com/zhouhaixian/bilibili-quick-collect
+        源代码存储库：https://github.com/zhouhaixian/quadratic-formula-calculator
         键入 "license" 显示许可证信息，键入 "help" 显示帮助信息，键入 "quit" 或 "exit" 退出。
         键入一元二次方程（例如：x²+6x-7）以开始计算
-        请输入: 
-        """
-    )
+        请输入: """
+        , end="")
 
 
 if __name__ == '__main__':
     while True:
-        print_help()
-        content = input()
-        match content:
-            case "help":
-                print_help()
-            case "license":
-                print_license()
-                input("\n\n\n请按任意键继续")
-            case "quit" | "exit":
-                quit()
-            case _:
-                try:
-                    input(f"解得: {calculate(content)}，请按任意键继续")
-                except ValueError:
-                    input("命令或方程不合法，请按任意键继续")
+        try:
+            print_help()
+            content = input()
+            match content:
+                case "help":
+                    print_help()
+                case "license":
+                    print_license()
+                    input("\n\n\n\t\t请按任意键继续")
+                case "quit" | "exit":
+                    break
+                case _:
+                    input(f"\t\t解得: {calculate(content)}，请按任意键继续")
+        except (ValueError, IndexError):
+            input("\t\t命令或方程不合法，请按任意键继续")

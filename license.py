@@ -1,4 +1,9 @@
 def get_license():
+    """
+    获取许可证信息
+
+    :return: 许可证信息
+    """
     return """
                     GNU GENERAL PUBLIC LICENSE
                        Version 3, 29 June 2007
