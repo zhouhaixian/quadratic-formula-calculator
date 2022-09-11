@@ -84,7 +84,7 @@ def print_help():
         """
     ====================================================================================
             Quadratic Formula Calculator
-                - Version: 1.0.5
+                - Version: 1.0.6
                 - Author:  周海衔
                 - License: GPL-3.0
                 - Repository: https://github.com/zhouhaixian/quadratic-formula-calculator
@@ -114,10 +114,10 @@ if __name__ == '__main__':
                     print_help()
                 case "license":
                     print_license()
-                    input("\n\n\n\t\t请按任意键继续")
+                    input("\n\n\n请按任意键继续")
                 case "quit" | "exit":
                     break
                 case _:
-                    input(f"\t\t解得: {calculate(content)}，请按任意键继续")
+                    input(f"        解得: {calculate(content)}，请按任意键继续")
         except (ValueError, IndexError):
-            input("\t\t命令或方程不合法，请按任意键继续")
+            input("        命令或方程不合法，请按任意键继续")
