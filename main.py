@@ -84,7 +84,7 @@ def print_help():
         """
     ====================================================================================
             Quadratic Formula Calculator
-                - Version: 1.0.6
+                - Version: 1.0.7
                 - Author:  周海衔
                 - License: GPL-3.0
                 - Repository: https://github.com/zhouhaixian/quadratic-formula-calculator
@@ -111,7 +111,7 @@ if __name__ == '__main__':
             content = input()
             match content:
                 case "help":
-                    print_help()
+                    continue
                 case "license":
                     print_license()
                     input("\n\n\n请按任意键继续")
