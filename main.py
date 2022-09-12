@@ -19,41 +19,41 @@ def parse(equation):
     return result
 
 
-def calculate_detail(abc):
+def calculate_discriminant(abc):
     """
     计算方程的 △
 
     :param abc: 一个由方程的一次项系数、二次项系数、常数项组成的数组
-    :return: detail: △
+    :return: discriminant: △
     """
     a = abc[0]
     b = abc[1]
     c = abc[2]
 
     # △ = b² - 4ac
-    return pow(b, 2) - 4 * a * c
+    return (b ** 2) - (4 * a * c)
 
 
-def solve(abc, detail):
+def solve(abc, discriminant):
     """
     求出方程的实数根
 
     :param abc: 一个由方程的一次项系数、二次项系数、常数项组成的数组
-    :param detail: △
+    :param discriminant: △
     :return: 方程的实数解
     """
     a = abc[0]
     b = abc[1]
-    if detail > 0:
+    if discriminant > 0:
         # x1 = (-b + √△) / (2a)
-        x1 = (-b + pow(detail, 0.5)) / (2 * a)
+        x1 = (-b + (discriminant ** 0.5)) / (2 * a)
         # x2 = (-b - √△) / (2a)
-        x2 = (-b - pow(detail, 0.5)) / (2 * a)
+        x2 = (-b - (discriminant ** 0.5)) / (2 * a)
         return f"x1 = {x1}, x2 = {x2}"
-    elif detail == 0:
+    elif discriminant == 0:
         x = (-b) / (2 * a)
         return f"x1=x2={x}"
-    elif detail < 0:
+    elif discriminant < 0:
         return "方程无实数根"
 
 
@@ -65,8 +65,8 @@ def calculate(equation):
     :return: 方程的实数解
     """
     abc = parse(equation)
-    detail = calculate_detail(abc)
-    return solve(abc, detail)
+    discriminant = calculate_discriminant(abc)
+    return solve(abc, discriminant)
 
 
 def print_license():
